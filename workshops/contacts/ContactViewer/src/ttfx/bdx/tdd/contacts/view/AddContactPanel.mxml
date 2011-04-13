@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 title="Ajouter un contact">
+	<mx:Form>
+		<mx:FormItem label="Prénom">
+			<mx:TextInput id="firstNameInput">
+				
+			</mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Nom">
+			<mx:TextInput id="lastNameInput">
+				
+			</mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem>
+			<s:Button label="Ajouter"/>
+		</mx:FormItem>
+	</mx:Form>
+</s:Panel>
