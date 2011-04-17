@@ -3,27 +3,14 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:view="ttfx.bdx.tdd.contacts.view.*"
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
-			   minWidth="955" minHeight="600"
-			   creationComplete="onCreationComplete()">
+			   minWidth="955" minHeight="600">
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.IList;
-			
-			import ttfx.bdx.tdd.contact.service.ContactService;
 			import ttfx.bdx.tdd.contact.service.ThirdPartyContactService;
+			import ttfx.bdx.tdd.contact.service.ContactService;
+			
 			private var service:ContactService = new ThirdPartyContactService();
 			
-			private function onCreationComplete():void {
-				service.getAllContacts(onResult,onFault);
-			}
-			
-			private function onResult(list:IList):void {
-				contacts.list.dataProvider = list;
-			}
-			
-			private function onFault(error:Error):void {
-				service.getAllContacts(onResult,onFault);
-			}
 		]]>
 	</fx:Script>
 	<s:layout>
