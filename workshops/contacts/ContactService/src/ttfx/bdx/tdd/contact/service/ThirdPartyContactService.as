@@ -11,6 +11,8 @@ package ttfx.bdx.tdd.contact.service {
 		
 		public function ThirdPartyContactService() {
 			super();
+			contacts.addItem(new Contact(generateId(), "Donald", "Duck", "+33 1 23 45 67 89"));
+			contacts.addItem(new Contact(generateId(), "Mickey", "Mouse", "+33 1 89 67 54 32"));
 		}
 		
 		public function getAllContacts(resultHandler:Function, faultHandler:Function):void {
