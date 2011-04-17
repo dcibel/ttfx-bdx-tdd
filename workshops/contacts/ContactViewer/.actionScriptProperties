@@ -19,6 +19,8 @@
   </compiler>
   <applications>
     <application path="ContactViewer.mxml"/>
+    <application path="FlexUnitApplication.mxml"/>
+    <application path="FlexUnitCompilerApplication.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>

@@ -7,23 +7,16 @@
 			   creationComplete="onCreationComplete()">
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.IList;
-			
-			import ttfx.bdx.tdd.contact.service.ContactService;
 			import ttfx.bdx.tdd.contact.service.ThirdPartyContactService;
-			private var service:ContactService = new ThirdPartyContactService();
+			import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
+			
+			[Bindable]
+			public var viewModel:ContactsViewModel = new ContactsViewModel(new ThirdPartyContactService());
 			
 			private function onCreationComplete():void {
-				service.getAllContacts(onResult,onFault);
+				viewModel.getContacts();
 			}
 			
-			private function onResult(list:IList):void {
-				contacts.list.dataProvider = list;
-			}
-			
-			private function onFault(error:Error):void {
-				service.getAllContacts(onResult,onFault);
-			}
 		]]>
 	</fx:Script>
 	<s:layout>
@@ -33,7 +26,7 @@
 		<view:AddContactPanel>
 			
 		</view:AddContactPanel>
-		<view:ContactListPanel id="contacts" width="100%" height="100%">
+		<view:ContactListPanel id="contactsPanel" width="100%" height="100%" contacts="{viewModel.contacts}">
 			
 		</view:ContactListPanel>
 	</s:HGroup>

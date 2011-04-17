@@ -4,8 +4,16 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 title="Mes contacts">
 	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.IList;
+			
+			[Bindable]
+			public var contacts:IList;
+		]]>
+	</fx:Script>
 	
-	<s:List id="list" 
+	<s:List dataProvider="{contacts}"
 		width="100%" height="100%"
 			itemRenderer="ttfx.bdx.tdd.contacts.view.ContactItemRenderer">
 	</s:List>
