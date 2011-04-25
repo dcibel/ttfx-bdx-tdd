@@ -3,8 +3,7 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:view="ttfx.bdx.tdd.contacts.view.*"
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
-			   minWidth="955" minHeight="600"
-			   creationComplete="onCreationComplete()">
+			   minWidth="955" minHeight="600" creationComplete="onCreationComplete()">
 	<fx:Script>
 		<![CDATA[
 			import ttfx.bdx.tdd.contact.service.ThirdPartyContactService;

@@ -1,7 +1,7 @@
 package ttfx.bdx.tdd.contact.service {
 	import flash.events.IEventDispatcher;
 
-	public interface ContactService extends IEventDispatcher {
+	public interface ContactService {
 		function getAllContacts(resultHandler:Function, faultHandler:Function):void;
 		
 		function addContact(firstName:String, lastName:String, phone:String,

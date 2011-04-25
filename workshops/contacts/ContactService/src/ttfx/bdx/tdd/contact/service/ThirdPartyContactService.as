@@ -4,7 +4,7 @@ package ttfx.bdx.tdd.contact.service {
 	import mx.collections.ArrayCollection;
 	import mx.collections.IList;
 	
-	public class ThirdPartyContactService extends EventDispatcher implements ContactService {
+	public class ThirdPartyContactService implements ContactService {
 		
 		private var nextGeneratedId:int = 0;
 		private var contacts:ArrayCollection = new ArrayCollection();
@@ -93,7 +93,7 @@ import flash.utils.Timer;
 
 class UglyOperation {
 
-	private var SUCCESS_PROBABILITY:Number = 0.6;
+	private var SUCCESS_PROBABILITY:Number = 0.85;
 	private var _command:Function;
 	private var _errorHandler:Function;
 	
