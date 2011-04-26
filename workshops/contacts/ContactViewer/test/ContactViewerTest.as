@@ -1,13 +1,15 @@
 package  {
+	import flash.events.Event;
+	
 	import mx.collections.ArrayCollection;
 	import mx.events.FlexEvent;
 	
 	import org.flexunit.asserts.assertEquals;
-	
-	import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
-	import ttfx.bdx.tdd.contact.service.Contact;
-	
+	import org.flexunit.async.Async;
 	import org.fluint.uiImpersonation.UIImpersonator;
+	
+	import ttfx.bdx.tdd.contact.service.Contact;
+	import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
 
 	public class ContactViewerTest {		
 		
@@ -25,6 +27,7 @@ package  {
 		[Test]
 		public function testContactListPanelUsesViewModelList():void {
 			var application:ContactViewer = new ContactViewer();
+			application.viewModel = new ContactsViewModelStub();
 			
 			application.viewModel.contacts = new ArrayCollection([
 				new Contact(0, "Bruce", "Wayne", "00000"),
@@ -67,5 +70,15 @@ class ContactsViewModelRecording extends ContactsViewModel {
 		} else {
 			return calls[functionName].length;
 		}
+	}
+}
+
+class ContactsViewModelStub extends ContactsViewModel {
+	
+	public function ContactsViewModelStub() {
+		super(null);
+	};
+	
+	override public function getContacts():void {
 	}
 }

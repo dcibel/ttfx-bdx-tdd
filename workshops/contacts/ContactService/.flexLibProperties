@@ -4,6 +4,7 @@
     <classEntry path="ttfx.bdx.tdd.contact.service.ContactService"/>
     <classEntry path="ttfx.bdx.tdd.contact.service.ThirdPartyContactService"/>
     <classEntry path="ttfx.bdx.tdd.contact.service.Contact"/>
+    <classEntry path="ttfx.bdx.tdd.contact.service.ReliableContactService"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

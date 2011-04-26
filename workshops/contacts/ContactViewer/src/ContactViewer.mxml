@@ -6,27 +6,29 @@
 			   minWidth="955" minHeight="600" creationComplete="onCreationComplete()">
 	<fx:Script>
 		<![CDATA[
-			import ttfx.bdx.tdd.contact.service.ThirdPartyContactService;
+			import ttfx.bdx.tdd.contact.service.ReliableContactService;
 			import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
 			
 			[Bindable]
-			public var viewModel:ContactsViewModel = new ContactsViewModel(new ThirdPartyContactService());
+			public var viewModel:ContactsViewModel = new ContactsViewModel(new ReliableContactService());
 			
 			private function onCreationComplete():void {
 				viewModel.getContacts();
 			}
-			
 		]]>
 	</fx:Script>
 	<s:layout>
 		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
 	</s:layout>
-	<s:HGroup width="600" height="400">
-		<view:AddContactPanel>
-			
-		</view:AddContactPanel>
-		<view:ContactListPanel id="contactsPanel" width="100%" height="100%" contacts="{viewModel.contacts}">
-			
-		</view:ContactListPanel>
-	</s:HGroup>
+	<s:VGroup>
+		<s:Label id="statusLabel" width="100%"/>
+		<s:HGroup width="600" height="400">
+			<view:AddContactPanel>
+				
+			</view:AddContactPanel>
+			<view:ContactListPanel id="contactsPanel" width="100%" height="100%" contacts="{viewModel.contacts}">
+				
+			</view:ContactListPanel>
+		</s:HGroup>
+	</s:VGroup>
 </s:Application>

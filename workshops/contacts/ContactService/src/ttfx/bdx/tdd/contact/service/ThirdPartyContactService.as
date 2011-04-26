@@ -6,11 +6,13 @@ package ttfx.bdx.tdd.contact.service {
 	
 	public class ThirdPartyContactService implements ContactService {
 		
+		private var successProbability:Number;
 		private var nextGeneratedId:int = 0;
 		private var contacts:ArrayCollection = new ArrayCollection();
 		
-		public function ThirdPartyContactService() {
+		public function ThirdPartyContactService(successProbability:Number=0.85) {
 			super();
+			this.successProbability = successProbability;
 			contacts.addItem(new Contact(generateId(), "Donald", "Duck", "+33 1 23 45 67 89"));
 			contacts.addItem(new Contact(generateId(), "Mickey", "Mouse", "+33 1 89 67 54 32"));
 		}
@@ -81,7 +83,7 @@ package ttfx.bdx.tdd.contact.service {
 		}
 		
 		private function performOperation(command:Function, faultHandler:Function):void {
-			var operation:UglyOperation = new UglyOperation();
+			var operation:UglyOperation = new UglyOperation(successProbability);
 			operation.perform(command, faultHandler);
 		}
 		
@@ -92,10 +94,13 @@ import flash.events.TimerEvent;
 import flash.utils.Timer;
 
 class UglyOperation {
-
-	private var SUCCESS_PROBABILITY:Number = 0.85;
+	private var _successProbability:Number;
 	private var _command:Function;
 	private var _errorHandler:Function;
+	
+	public function UglyOperation(successProbability:Number):void {
+		this._successProbability = successProbability;
+	}
 	
 	public function perform(command:Function, errorHandler:Function):void {
 		_command = command;
@@ -112,6 +117,6 @@ class UglyOperation {
 	}
 	
 	public function isSuccess():Boolean {
-		return Math.random() < SUCCESS_PROBABILITY;
+		return Math.random() < this._successProbability;
 	}
 }
