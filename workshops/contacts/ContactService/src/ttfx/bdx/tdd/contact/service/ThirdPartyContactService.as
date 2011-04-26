@@ -10,7 +10,7 @@ package ttfx.bdx.tdd.contact.service {
 		private var nextGeneratedId:int = 0;
 		private var contacts:ArrayCollection = new ArrayCollection();
 		
-		public function ThirdPartyContactService(sucessProbability:Number=0.85) {
+		public function ThirdPartyContactService(successProbability:Number=0.85) {
 			super();
 			this.successProbability = successProbability;
 			contacts.addItem(new Contact(generateId(), "Donald", "Duck", "+33 1 23 45 67 89"));
