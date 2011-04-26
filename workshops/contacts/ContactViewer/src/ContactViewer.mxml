@@ -6,10 +6,10 @@
 			   minWidth="955" minHeight="600">
 	<fx:Script>
 		<![CDATA[
-			import ttfx.bdx.tdd.contact.service.ThirdPartyContactService;
+			import ttfx.bdx.tdd.contact.service.ReliableContactService;
 			import ttfx.bdx.tdd.contact.service.ContactService;
 			
-			private var service:ContactService = new ThirdPartyContactService();
+			private var service:ContactService = new ReliableContactService();
 			
 		]]>
 	</fx:Script>
