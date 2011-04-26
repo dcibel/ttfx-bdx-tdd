@@ -16,12 +16,15 @@
 	<s:layout>
 		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
 	</s:layout>
-	<s:HGroup width="600" height="400">
-		<view:AddContactPanel>
-			
-		</view:AddContactPanel>
-		<view:ContactListPanel id="contacts" width="100%" height="100%">
-			
-		</view:ContactListPanel>
-	</s:HGroup>
+	<s:VGroup>
+		<s:Label id="statusLabel" width="100%"/>
+		<s:HGroup width="600" height="400">
+			<view:AddContactPanel>
+				
+			</view:AddContactPanel>
+			<view:ContactListPanel id="contactList" width="100%" height="100%">
+				
+			</view:ContactListPanel>
+		</s:HGroup>
+	</s:VGroup>
 </s:Application>
