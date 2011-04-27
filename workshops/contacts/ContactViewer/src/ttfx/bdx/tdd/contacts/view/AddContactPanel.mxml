@@ -3,6 +3,22 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 title="Ajouter un contact">
+    <fx:Metadata>
+        [Event(name="addContact", type="ttfx.bdx.tdd.contacts.view.AddContactEvent")]
+    </fx:Metadata>
+    <fx:Script>
+        <![CDATA[
+            import mx.events.FlexEvent;
+            protected function add_buttonDownHandler(event:FlexEvent):void {
+                dispatchEvent(new AddContactEvent(AddContactEvent.ADD_CONTACT,
+                    firstNameInput.text, lastNameInput.text));
+                
+                firstNameInput.text = "";
+                lastNameInput.text = "";
+            }
+        ]]>
+    </fx:Script>
+    
 	<mx:Form>
 		<mx:FormItem label="Prénom">
 			<mx:TextInput id="firstNameInput">
@@ -15,7 +31,7 @@
 			</mx:TextInput>
 		</mx:FormItem>
 		<mx:FormItem>
-			<s:Button label="Ajouter"/>
+			<s:Button id="addButton" label="Ajouter" buttonDown="add_buttonDownHandler(event)"/>
 		</mx:FormItem>
 	</mx:Form>
 </s:Panel>

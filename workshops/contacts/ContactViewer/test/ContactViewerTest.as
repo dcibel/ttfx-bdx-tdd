@@ -9,6 +9,7 @@ package  {
 	import org.fluint.uiImpersonation.UIImpersonator;
 	
 	import ttfx.bdx.tdd.contact.service.Contact;
+	import ttfx.bdx.tdd.contacts.view.AddContactEvent;
 	import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
 
 	public class ContactViewerTest {		
@@ -24,6 +25,22 @@ package  {
 			assertEquals(1, recordingViewModel.callCount("getContacts"));
 		}
 		
+        [Test]
+        public function testAddContactWhenAddContactEventIsDispatched():void {
+            var application:ContactViewer = new ContactViewer();
+            
+            UIImpersonator.addChild( application );
+            
+            var recordingViewModel:ContactsViewModelRecording = new ContactsViewModelRecording();
+            application.viewModel = recordingViewModel;
+            
+            application.addContactPanel.dispatchEvent(new AddContactEvent(AddContactEvent.ADD_CONTACT, "Tonton", "Flexeur"));
+            
+            assertEquals(1, recordingViewModel.callCount("addContact"));
+            assertEquals("Tonton", recordingViewModel.getCallArgs("addContact", 0)[0]);
+            assertEquals("Flexeur", recordingViewModel.getCallArgs("addContact", 0)[1]);
+        }
+        
 		[Test]
 		public function testContactListPanelUsesViewModelList():void {
 			var application:ContactViewer = new ContactViewer();
@@ -56,6 +73,10 @@ class ContactsViewModelRecording extends ContactsViewModel {
 	override public function getContacts():void {
 		recordCall("getContacts");
 	}
+    
+    override public function addContact(firstName:String, lastName:String):void {
+        recordCall("addContact", firstName, lastName);
+    }
 	
 	private function recordCall(functionName:String, ...args):void {
 		if ( !calls[functionName] ) {
@@ -71,6 +92,10 @@ class ContactsViewModelRecording extends ContactsViewModel {
 			return calls[functionName].length;
 		}
 	}
+    
+    public function getCallArgs(functionName:String, index:int):Array {
+        return calls[functionName][index];
+    }
 }
 
 class ContactsViewModelStub extends ContactsViewModel {

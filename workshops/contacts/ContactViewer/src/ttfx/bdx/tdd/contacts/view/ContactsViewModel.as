@@ -3,6 +3,7 @@ package ttfx.bdx.tdd.contacts.view {
 	
 	import mx.collections.IList;
 	
+	import ttfx.bdx.tdd.contact.service.Contact;
 	import ttfx.bdx.tdd.contact.service.ContactService;
 
 	public class ContactsViewModel extends EventDispatcher{
@@ -22,6 +23,13 @@ package ttfx.bdx.tdd.contacts.view {
 					contacts = contactList;
 				}, onError);
 		}
+        
+        public function addContact(firstName:String, lastName:String):void {
+            service.addContact(firstName, lastName, "",
+                function(contact:Contact):void {
+                    getContacts();
+                }, onError);
+        }
 		
 		private function onError(error:Error):void {
 			

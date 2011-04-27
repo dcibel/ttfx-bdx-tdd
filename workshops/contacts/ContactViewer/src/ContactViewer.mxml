@@ -6,8 +6,9 @@
 			   minWidth="955" minHeight="600" creationComplete="onCreationComplete()">
 	<fx:Script>
 		<![CDATA[
-			import ttfx.bdx.tdd.contact.service.ReliableContactService;
-			import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
+            import ttfx.bdx.tdd.contact.service.ReliableContactService;
+            import ttfx.bdx.tdd.contacts.view.AddContactEvent;
+            import ttfx.bdx.tdd.contacts.view.ContactsViewModel;
 			
 			[Bindable]
 			public var viewModel:ContactsViewModel = new ContactsViewModel(new ReliableContactService());
@@ -15,6 +16,11 @@
 			private function onCreationComplete():void {
 				viewModel.getContacts();
 			}
+
+            protected function addcontactpanel1_addContactHandler(event:AddContactEvent):void {
+                viewModel.addContact(event.firstName, event.lastName);
+            }
+
 		]]>
 	</fx:Script>
 	<s:layout>
@@ -23,7 +29,7 @@
 	<s:VGroup>
 		<s:Label id="statusLabel" width="100%"/>
 		<s:HGroup width="600" height="400">
-			<view:AddContactPanel>
+			<view:AddContactPanel id="addContactPanel" addContact="addcontactpanel1_addContactHandler(event)">
 				
 			</view:AddContactPanel>
 			<view:ContactListPanel id="contactsPanel" width="100%" height="100%" contacts="{viewModel.contacts}">
