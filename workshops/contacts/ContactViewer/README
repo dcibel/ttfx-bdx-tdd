@@ -1,0 +1,17 @@
+
+
+Interface ContactService :
+
+    function getAllContacts(resultHandler:Function, faultHandler:Function):void;
+    
+    function addContact(firstName:String, lastName:String, phone:String,
+              resultHandler:Function, faultHandler:Function):void;
+    
+    function updateContactContact(id:int, firstName:String, lastName:String, phone:String,
+                    resultHandler:Function, faultHandler:Function):void;
+    
+    function deleteContactContact(id:int,
+                    resultHandler:Function, faultHandler:Function):void;
+
+resultHandler est une fonction à un argument. L'argument passé est le résultat (une list pour getAll, le contact pour add et update, et null pour delete)
+faultHandler est une fonction à un argument. L'argument passé est un objet Error
