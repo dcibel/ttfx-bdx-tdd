@@ -2,5 +2,6 @@
 <testrun name="" >
 <testsuite  name="Default Test Suite" project="TestTips">
 <testsuite name="ttfx.bdx.tdd:AsyncTests" type="testcaseclass"/>
+<testsuite name="ttfx.bdx.tdd:ErrorTests" type="testcaseclass"/>
 </testsuite>
 </testrun>
