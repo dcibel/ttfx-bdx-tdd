@@ -34,7 +34,7 @@ package ttfx.bdx.tdd
 			UIImpersonator.removeAllChildren();
 		}
 		
-		[Test(async, description="A timer should filre TIMER_COMPLETE event")]
+		[Test(async, description="A timer should fire TIMER_COMPLETE event")]
 		public function timerShouldFireCompleteEvent():void {
 			var timer:Timer = new Timer(100, 1);
 			
