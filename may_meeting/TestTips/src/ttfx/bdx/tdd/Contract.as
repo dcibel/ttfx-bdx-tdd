@@ -7,5 +7,11 @@ package ttfx.bdx.tdd
 				throw new ContractError();
 			}
 		}
+		
+		public static function postcondition(test:Boolean):void {
+			if (!test) {
+				throw new ContractError();
+			}
+		}
 	}
 }
