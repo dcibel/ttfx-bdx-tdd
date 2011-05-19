@@ -8,7 +8,15 @@ Please click on the "Refresh" icon in "FlexUnit Results" view to regenerate this
 			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
 	<fx:Script>
 		<![CDATA[
+			import ttfx.bdx.tdd.AddContactCommandTest;
 			import ttfx.bdx.tdd.ErrorTests;
+			import ttfx.bdx.tdd.TaskSerializationFilterTest;
+			
+			private var ttfx_bdx_tdd_AddContactCommandTest_obj:ttfx.bdx.tdd.AddContactCommandTest;
+			
+			
+			private var ttfx_bdx_tdd_TaskSerializationFilterTest_obj:ttfx.bdx.tdd.TaskSerializationFilterTest;
+			
 			
 			private var ttfx_bdx_tdd_ErrorTests_obj:ttfx.bdx.tdd.ErrorTests;
 			
