@@ -9,6 +9,8 @@ package ttfx.bdx.tdd
 	import mockolate.prepare;
 	import mockolate.received;
 	import mockolate.strict;
+	import mockolate.stub;
+	import mockolate.verify;
 	
 	import mx.rpc.http.HTTPService;
 	
@@ -39,5 +41,27 @@ package ttfx.bdx.tdd
 			assertThat(service, received().method('send').arg( hasProperties(
 				{firstName: "Mickey", lastName: "Mouse"}) ));
 		}
+		
+		[Test(description="Example with stric mock")]
+		public function testExecute2():void {
+			var service:HTTPService = strict(HTTPService);
+			stub(service).method("send").args( 
+				hasProperties( {firstName: "Mickey", lastName: "Mouse"} ) ).once();
+			
+			var command:AddContactCommand = new AddContactCommand(service);
+			command.firstName = "Mickey";
+			command.lastName = "Mouse";
+			
+			command.execute();
+			
+			verify(service); // make sure the mock method was called
+		}
+		
+		[Test(description="Example with mock returns")]
+		public function testDispatchesErrorEventWhenResultIsErrorCode():void {
+			
+		}		
+		// Tester la méthode qui gère le result, mocker un  ResultEvent pour qu'il retourne un code d'erreur
+		
 	}
 }

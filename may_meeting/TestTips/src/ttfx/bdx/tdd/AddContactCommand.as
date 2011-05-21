@@ -1,7 +1,6 @@
 package ttfx.bdx.tdd
 {
 	import flash.events.EventDispatcher;
-	import flash.events.IEventDispatcher;
 	
 	import mx.rpc.http.HTTPService;
 	
