@@ -1,7 +1,9 @@
 package ttfx.bdx.tdd
 {
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	
+	import mx.rpc.events.ResultEvent;
 	import mx.rpc.http.HTTPService;
 	
 	public class AddContactCommand extends EventDispatcher {
@@ -18,6 +20,13 @@ package ttfx.bdx.tdd
 		
 		public function execute():void {
 			service.send({firstName:firstName, lastName:lastName});
+			service.addEventListener(ResultEvent.RESULT, onResult);
+		}
+		
+		private function onResult(event:ResultEvent):void {
+			if (event.result == "ttfx.bdx.tdd.server.AddressBookIsFullError") {
+				dispatchEvent(new CommandErrorEvent("error"));
+			}
 		}
 	}
 }

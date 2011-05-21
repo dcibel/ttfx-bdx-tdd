@@ -12,10 +12,14 @@ package ttfx.bdx.tdd
 	import mockolate.stub;
 	import mockolate.verify;
 	
+	import mx.rpc.events.ResultEvent;
 	import mx.rpc.http.HTTPService;
+	
+	import net.digitalprimates.fluint.async.AsyncHandler;
 	
 	import org.flexunit.assertThat;
 	import org.flexunit.async.Async;
+	import org.hamcrest.core.isA;
 	import org.hamcrest.object.hasProperties;
 	
 	public class AddContactCommandTest {
@@ -42,9 +46,11 @@ package ttfx.bdx.tdd
 				{firstName: "Mickey", lastName: "Mouse"}) ));
 		}
 		
-		[Test(description="Example with stric mock")]
+		[Test(description="Example with strict mock")]
 		public function testExecute2():void {
 			var service:HTTPService = strict(HTTPService);
+			
+			stub(service).method("addEventListener").anyArgs().once();
 			stub(service).method("send").args( 
 				hasProperties( {firstName: "Mickey", lastName: "Mouse"} ) ).once();
 			
@@ -57,11 +63,19 @@ package ttfx.bdx.tdd
 			verify(service); // make sure the mock method was called
 		}
 		
-		[Test(description="Example with mock returns")]
+		[Test(async)]
 		public function testDispatchesErrorEventWhenResultIsErrorCode():void {
+			var service:HTTPService = strict(HTTPService);
+			stub(service).method("send").anyArgs().once().dispatches(
+				ResultEvent.createEvent("ttfx.bdx.tdd.server.AddressBookIsFullError"), 300);
 			
+			var command:AddContactCommand = new AddContactCommand(service);
+			command.execute();
+			
+			Async.handleEvent(this, command, CommandErrorEvent.ERROR,
+				function(event:Event, passThroughData:Object):void {
+					assertThat(event, isA(CommandErrorEvent));
+				});
 		}		
-		// Tester la méthode qui gère le result, mocker un  ResultEvent pour qu'il retourne un code d'erreur
-		
 	}
 }
