@@ -9,12 +9,17 @@
 			import mx.utils.ObjectUtil;
 			protected function testRegexp():void {
 				
-				var regexp:RegExp = new RegExp(regexpInput.text);
+				var regexp:RegExp = new RegExp(regexpInput.text, "g");
+				
 				var text:String = testText.text;
 				
 				var result:* = regexp.exec(text);
 				
-				resultLabel.text = result.join(",");
+				if (result) {
+					resultLabel.text = result[0];
+				} else {
+					resultLabel.text = "No match !";
+				}
 			}
 		]]>
 	</fx:Script>
@@ -39,7 +44,7 @@
 				<s:Label text="Regular expression:"/>
 				<s:TextInput id="regexpInput"/>
 			</s:VGroup>
-			<s:Button label="Tester" click="testRegexp()"/>
+			<s:Button label="Test" click="testRegexp()"/>
 			<s:VGroup>
 				<s:Label text="Result:"/>
 				<s:Label id="resultLabel"/>
