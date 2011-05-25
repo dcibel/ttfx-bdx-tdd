@@ -4,6 +4,5 @@
 <testsuite name="ttfx.bdx.tdd:AddContactCommandTest" type="testcaseclass"/>
 <testsuite name="ttfx.bdx.tdd:AsyncTests" type="testcaseclass"/>
 <testsuite name="ttfx.bdx.tdd:ErrorTests" type="testcaseclass"/>
-<testsuite name="ttfx.bdx.tdd:TaskSerializationFilterTest" type="testcaseclass"/>
 </testsuite>
 </testrun>

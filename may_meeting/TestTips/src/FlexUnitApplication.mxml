@@ -7,7 +7,6 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:flexui="flexunit.flexui.*" creationComplete="onCreationComplete()">
 	<fx:Script>
 		<![CDATA[
-			import ttfx.bdx.tdd.TaskSerializationFilterTest;
 			import ttfx.bdx.tdd.ErrorTests;
 			import ttfx.bdx.tdd.AsyncTests;
 			import ttfx.bdx.tdd.AddContactCommandTest;
@@ -18,7 +17,6 @@
 				testsToRun.push(ttfx.bdx.tdd.AddContactCommandTest);
 				testsToRun.push(ttfx.bdx.tdd.AsyncTests);
 				testsToRun.push(ttfx.bdx.tdd.ErrorTests);
-				testsToRun.push(ttfx.bdx.tdd.TaskSerializationFilterTest);
 				return testsToRun;
 			}
 			

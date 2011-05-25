@@ -25,8 +25,16 @@ package ttfx.bdx.tdd
 		
 		private function onResult(event:ResultEvent):void {
 			if (event.result == "ttfx.bdx.tdd.server.AddressBookIsFullError") {
-				dispatchEvent(new CommandErrorEvent("error"));
+				dispatchEvent(new CommandErrorEvent( CommandErrorEvent.ERROR ));
+			} else {
+				// not covered
+				handleSuccess( String(event.result) );
 			}
+		}
+		
+		private function handleSuccess(response:String):void {
+			// not covered
+			dispatchEvent(new CommandSuccessEvent( CommandSuccessEvent.SUCCESS ) );
 		}
 	}
 }
